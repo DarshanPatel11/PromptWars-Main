@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## 🔑 Demo & Testing Credentials
+
+To explore the application with 3 weeks of pre-seeded student history (journal entries, mood logs, trigger analytics, and burnout risk trends), use the following credentials on the login screen:
+
+* **Email:** `priya@sharma.com`
+* **Password:** `Priya@123`
+
 ## Getting Started
 
 First, run the development server:
