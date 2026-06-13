@@ -203,14 +203,14 @@ export function Tier2Cards({ userId }: Tier2CardsProps) {
   if (!data) return null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
       {/* Trigger Detection */}
       <div
-        className="glass-card p-6 animate-slide-up"
+        className="glass-card p-8 animate-slide-up"
         role="region"
         aria-labelledby="triggers-heading"
       >
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center gap-2 mb-5">
           <Target className="w-4 h-4" style={{ color: "var(--accent-primary)" }} aria-hidden="true" />
           <h3 id="triggers-heading" className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-muted)" }}>
             Top Triggers
@@ -242,11 +242,11 @@ export function Tier2Cards({ userId }: Tier2CardsProps) {
 
       {/* Burnout Prediction */}
       <div
-        className="glass-card p-6 animate-slide-up"
+        className="glass-card p-8 animate-slide-up"
         role="region"
         aria-labelledby="burnout-heading"
       >
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center gap-2 mb-5">
           <AlertTriangle className="w-4 h-4" style={{ color: "var(--color-warning)" }} aria-hidden="true" />
           <h3 id="burnout-heading" className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-muted)" }}>
             Burnout Risk
@@ -260,11 +260,11 @@ export function Tier2Cards({ userId }: Tier2CardsProps) {
 
       {/* Hidden Pattern */}
       <div
-        className="glass-card p-6 animate-slide-up"
+        className="glass-card p-8 animate-slide-up"
         role="region"
         aria-labelledby="pattern-heading"
       >
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center gap-2 mb-5">
           <Lightbulb className="w-4 h-4" style={{ color: "var(--color-warning)" }} aria-hidden="true" />
           <h3 id="pattern-heading" className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-muted)" }}>
             Hidden Pattern
@@ -277,11 +277,11 @@ export function Tier2Cards({ userId }: Tier2CardsProps) {
 
       {/* What Changed */}
       <div
-        className="glass-card p-6 animate-slide-up"
+        className="glass-card p-8 animate-slide-up"
         role="region"
         aria-labelledby="changed-heading"
       >
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center gap-2 mb-5">
           {data.whatChanged && data.whatChanged.score_change >= 0 ? (
             <TrendingUp className="w-4 h-4" style={{ color: "var(--color-success)" }} aria-hidden="true" />
           ) : (

@@ -162,7 +162,7 @@ export default async function DashboardPage() {
       {/* Journaling streak */}
       {profile && (
         <div
-          className="glass-card p-5 mt-8 flex items-center gap-4"
+          className="glass-card p-8 mt-8 flex items-center gap-6"
           role="status"
           aria-label={`Journaling streak: ${profile.check_in_count} days`}
         >
