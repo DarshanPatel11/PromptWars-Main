@@ -36,8 +36,15 @@ export async function middleware(request: NextRequest) {
     request,
   });
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.warn(
+      "[MindCompass Middleware] Missing Supabase credentials. Bypassing middleware checks."
+    );
+    return supabaseResponse;
+  }
 
   // Create a server-side Supabase client to refresh the session
   const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
