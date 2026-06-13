@@ -206,7 +206,7 @@ export function Tier2Cards({ userId }: Tier2CardsProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
       {/* Trigger Detection */}
       <div
-        className="glass-card p-5 animate-slide-up"
+        className="glass-card p-6 animate-slide-up"
         role="region"
         aria-labelledby="triggers-heading"
       >
@@ -242,7 +242,7 @@ export function Tier2Cards({ userId }: Tier2CardsProps) {
 
       {/* Burnout Prediction */}
       <div
-        className="glass-card p-5 animate-slide-up"
+        className="glass-card p-6 animate-slide-up"
         role="region"
         aria-labelledby="burnout-heading"
       >
@@ -260,7 +260,7 @@ export function Tier2Cards({ userId }: Tier2CardsProps) {
 
       {/* Hidden Pattern */}
       <div
-        className="glass-card p-5 animate-slide-up"
+        className="glass-card p-6 animate-slide-up"
         role="region"
         aria-labelledby="pattern-heading"
       >
@@ -277,7 +277,7 @@ export function Tier2Cards({ userId }: Tier2CardsProps) {
 
       {/* What Changed */}
       <div
-        className="glass-card p-5 animate-slide-up"
+        className="glass-card p-6 animate-slide-up"
         role="region"
         aria-labelledby="changed-heading"
       >

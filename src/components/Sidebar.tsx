@@ -129,7 +129,7 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
       </div>
 
       {/* User info & exam countdown */}
-      <div className="px-4 py-3 mx-3 mt-3 rounded-xl" style={{ background: "var(--bg-glass)", border: "1px solid var(--border-glass)" }}>
+      <div className="px-5 py-4 mx-4 mt-4 rounded-xl" style={{ background: "var(--bg-glass)", border: "1px solid var(--border-glass)" }}>
         <p className="text-sm font-semibold truncate" style={{ color: "var(--text-primary)" }}>
           {userName}
         </p>
@@ -155,7 +155,7 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
       </div>
 
       {/* Navigation links */}
-      <ul className="flex-1 px-3 mt-4 space-y-1" role="list">
+      <ul className="flex-1 px-4 mt-6 space-y-2" role="list">
         {NAV_ITEMS.map((item) => {
           const isActive = pathname === item.href ||
             (item.href !== "/dashboard" && pathname.startsWith(item.href));
@@ -168,7 +168,7 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 onClick={() => setIsMobileOpen(false)}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group"
+                className="flex items-center gap-4 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group"
                 style={{
                   background: isActive ? "var(--accent-gradient)" : "transparent",
                   color: isActive ? "white" : "var(--text-secondary)",
@@ -193,14 +193,14 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
 
       {/* Bottom actions */}
       <div
-        className="p-3 mt-auto"
+        className="p-5 mt-auto"
         style={{ borderTop: "1px solid var(--border-glass)" }}
       >
         <Link
           href="/profile"
           id="nav-profile"
           aria-label="Settings and profile"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors mb-1"
+          className="flex items-center gap-4 px-4 py-3 rounded-xl text-sm font-medium transition-colors mb-2"
           style={{ color: "var(--text-secondary)" }}
         >
           <Settings className="w-4 h-4" aria-hidden="true" />
@@ -211,7 +211,7 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
           id="btn-signout"
           onClick={handleSignOut}
           aria-label="Sign out of MindCompass AI"
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors"
+          className="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-sm font-medium transition-colors"
           style={{ color: "var(--text-muted)" }}
         >
           <LogOut className="w-4 h-4" aria-hidden="true" />

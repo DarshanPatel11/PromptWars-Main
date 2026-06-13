@@ -71,14 +71,14 @@ export function DashboardClient({
   return (
     <div className="flex flex-col gap-4 h-full">
       {/* Score trend chart */}
-      <div className="glass-card p-5 flex-1">
-        <h3 className="text-sm font-semibold mb-4" style={{ color: "var(--text-muted)" }}>
+      <div className="glass-card p-8 flex-1">
+        <h3 className="text-sm font-semibold mb-6" style={{ color: "var(--text-muted)" }}>
           14-DAY SCORE TREND
         </h3>
 
         {chartData.length > 1 ? (
           <figure aria-label="Mental Readiness Score trend over 14 days">
-            <ResponsiveContainer width="100%" height={140}>
+            <ResponsiveContainer width="100%" height={180}>
               <LineChart data={chartData}>
                 <XAxis
                   dataKey="date"
@@ -123,11 +123,11 @@ export function DashboardClient({
       {/* Latest AI insight card */}
       {latestInsight && (
         <div
-          className="glass-card p-5 animate-slide-up"
+          className="glass-card p-8 animate-slide-up"
           role="article"
           aria-label="Latest AI wellness insight"
         >
-          <h3 className="text-sm font-semibold mb-2 flex items-center gap-2" style={{ color: "var(--text-muted)" }}>
+          <h3 className="text-sm font-semibold mb-4 flex items-center gap-2" style={{ color: "var(--text-muted)" }}>
             <span aria-hidden="true">🧠</span>
             LATEST INSIGHT
             {!todayCheckedIn && (

@@ -85,13 +85,13 @@ export default async function DashboardPage() {
      * accessible semantic HTML: <main> with heading hierarchy.
      * Page heading h1 is rendered below in the greeting.
      */
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="p-8 max-w-7xl mx-auto">
       {/* Page header */}
-      <header className="mb-8">
+      <header className="mb-10">
         <h1 className="text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
           Good {getTimeOfDay()}, {profile?.name?.split(" ")[0] ?? "there"} 👋
         </h1>
-        <p className="mt-1 text-sm" style={{ color: "var(--text-secondary)" }}>
+        <p className="mt-2 text-sm" style={{ color: "var(--text-secondary)" }}>
           {todayCheckedIn
             ? "You've completed today's check-in. Here's your wellness overview."
             : "Start your day with a quick check-in to track your mental readiness."}
@@ -101,17 +101,17 @@ export default async function DashboardPage() {
       {/* Hero section: Score gauge + trends */}
       <section
         aria-labelledby="score-section-heading"
-        className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8"
       >
         {/* Mental Readiness Score (hero) */}
         <div
-          className="glass-card p-6 lg:col-span-1 flex flex-col items-center justify-center"
+          className="glass-card p-8 lg:col-span-1 flex flex-col items-center justify-center"
           role="region"
           aria-label="Mental Readiness Score"
         >
           <h2
             id="score-section-heading"
-            className="text-sm font-semibold uppercase tracking-wide mb-4"
+            className="text-sm font-semibold uppercase tracking-wide mb-6"
             style={{ color: "var(--text-muted)" }}
           >
             {"Today's Readiness"}
@@ -125,7 +125,7 @@ export default async function DashboardPage() {
           {!todayCheckedIn && (
             <a
               href="/checkin"
-              className="btn-gradient mt-6 w-full justify-center text-center"
+              className="btn-gradient mt-8 w-full justify-center text-center"
               id="cta-daily-checkin"
               aria-label="Complete your daily check-in"
             >
@@ -135,7 +135,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* Score trend chart + latest insight */}
-        <div className="lg:col-span-2 flex flex-col gap-6">
+        <div className="lg:col-span-2 flex flex-col gap-8">
           {/* Score trend */}
           <Suspense fallback={<div className="skeleton h-48 rounded-xl" aria-label="Loading trend chart" />}>
             <DashboardClient
@@ -148,10 +148,10 @@ export default async function DashboardPage() {
       </section>
 
       {/* Tier 2 cards: Triggers, Burnout, What Changed */}
-      <section aria-labelledby="insights-heading" className="mt-6">
+      <section aria-labelledby="insights-heading" className="mt-8">
         <h2
           id="insights-heading"
-          className="text-lg font-semibold mb-4"
+          className="text-lg font-semibold mb-6"
           style={{ color: "var(--text-primary)" }}
         >
           Pattern Intelligence
@@ -162,7 +162,7 @@ export default async function DashboardPage() {
       {/* Journaling streak */}
       {profile && (
         <div
-          className="glass-card p-4 mt-6 flex items-center gap-3"
+          className="glass-card p-5 mt-8 flex items-center gap-4"
           role="status"
           aria-label={`Journaling streak: ${profile.check_in_count} days`}
         >
