@@ -22,11 +22,6 @@ import { checkForCrisisLanguage } from "@/lib/safety";
 import type { GeminiAnalysisResponse } from "@/types";
 import { Brain, Loader2, CheckCircle, AlertCircle, Clock, BookOpen, Zap } from "lucide-react";
 
-export const metadata = {
-  title: "Daily Check-in",
-  description: "Log your mood, energy, and journal entry for AI-powered wellness analysis.",
-};
-
 /** Emoji mood options — mapped to internal score values. */
 const MOOD_OPTIONS = [
   { emoji: "😢", label: "Very sad", value: 2 },
