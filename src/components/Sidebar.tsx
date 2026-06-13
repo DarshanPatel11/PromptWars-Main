@@ -91,7 +91,7 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
     }
   };
 
-  const SidebarContent = () => (
+  const renderSidebarContent = () => (
     <nav
       aria-label="Main navigation"
       className="flex flex-col h-full"
@@ -243,7 +243,7 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
         className="hidden md:block h-screen sticky top-0"
         role="complementary"
       >
-        <SidebarContent />
+        {renderSidebarContent()}
       </div>
 
       {/* Mobile sidebar overlay */}
@@ -264,7 +264,7 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
           />
           {/* Sidebar panel */}
           <div className="relative w-72 h-full">
-            <SidebarContent />
+            {renderSidebarContent()}
           </div>
         </div>
       )}

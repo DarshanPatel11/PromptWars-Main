@@ -55,7 +55,7 @@ describe("checkForCrisisLanguage", () => {
       "I am thinking about hurting myself. I can't take this pressure anymore."
     );
     expect(result.isCrisis).toBe(true);
-    expect(result.triggeredKeywords.length).toBeGreaterThan(0);
+    expect(result.triggeredKeywords?.length).toBeGreaterThan(0);
   });
 
   it("detects suicidal ideation", () => {
@@ -113,7 +113,7 @@ describe("checkForCrisisLanguage", () => {
     );
     expect(result.isCrisis).toBe(true);
     expect(Array.isArray(result.triggeredKeywords)).toBe(true);
-    expect(result.triggeredKeywords.length).toBeGreaterThan(0);
+    expect(result.triggeredKeywords?.length).toBeGreaterThan(0);
   });
 
   // ── False positive prevention ─────────────────────────────

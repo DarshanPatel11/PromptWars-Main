@@ -236,7 +236,7 @@ export default function SignInPage() {
           className="text-center text-sm mt-6"
           style={{ color: "var(--text-secondary)" }}
         >
-          Don't have an account?{" "}
+          {"Don't have an account?"}{" "}
           <Link href="/auth/signup" className="font-medium">
             Create account
           </Link>

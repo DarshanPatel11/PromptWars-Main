@@ -175,7 +175,7 @@ export function SafetyOverlay({ onDismiss }: SafetyOverlayProps) {
           aria-label="I've read the resources. Continue to dashboard."
         >
           <X className="w-4 h-4" aria-hidden="true" />
-          I've noted the resources — continue to dashboard
+          {"I've noted the resources — continue to dashboard"}
         </button>
       </div>
     </div>

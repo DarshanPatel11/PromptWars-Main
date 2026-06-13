@@ -114,7 +114,7 @@ export default async function DashboardPage() {
             className="text-sm font-semibold uppercase tracking-wide mb-4"
             style={{ color: "var(--text-muted)" }}
           >
-            Today's Readiness
+            {"Today's Readiness"}
           </h2>
           <ScoreGauge
             score={latestScore?.score ?? null}

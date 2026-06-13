@@ -11,7 +11,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Brain, ChevronRight, Loader2, AlertCircle, BookOpen, Calendar, Activity } from "lucide-react";
@@ -51,6 +51,19 @@ export default function OnboardingPage() {
     avgSleep: 7,
     confidence: 5,
   });
+  const [daysUntil, setDaysUntil] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (form.examDate) {
+        const diff = new Date(form.examDate).getTime() - Date.now();
+        setDaysUntil(Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24))));
+      } else {
+        setDaysUntil(null);
+      }
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [form.examDate]);
 
   /** input validation: checks current step's required fields. */
   function validateStep(): string | null {
@@ -300,14 +313,14 @@ export default function OnboardingPage() {
                 />
               </div>
 
-              {form.examDate && (
+              {daysUntil !== null && (
                 <div
                   className="mt-4 p-3 rounded-xl text-sm"
                   style={{ background: "rgba(124,58,237,0.1)", border: "1px solid rgba(124,58,237,0.2)" }}
                   role="status"
                 >
                   <p style={{ color: "var(--accent-primary)" }}>
-                    {Math.max(0, Math.ceil((new Date(form.examDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24)))} days until your {form.examType} exam
+                    {daysUntil} days until your {form.examType} exam
                   </p>
                 </div>
               )}

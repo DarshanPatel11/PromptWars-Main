@@ -26,7 +26,7 @@ export default function CompanionPage() {
       role: "assistant",
       content:
         "Hi! I'm your MindCompass companion. I've been keeping track of your emotional journey and I'm here to support you. How are you feeling right now? What's on your mind?",
-      timestamp: Date.now(),
+      timestamp: 0,
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
