@@ -222,7 +222,7 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
   );
 
   return (
-    <>
+    <aside className="w-full md:w-64 flex-shrink-0">
       {/* Mobile toggle button */}
       <button
         className="fixed top-4 left-4 z-50 md:hidden p-2 rounded-lg glass-card"
@@ -268,6 +268,6 @@ export function Sidebar({ userName, examType, examDate }: SidebarProps) {
           </div>
         </div>
       )}
-    </>
+    </aside>
   );
 }

@@ -135,11 +135,11 @@ export function ScoreGauge({ score, explanation, isLoading }: ScoreGaugeProps) {
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuetext={`${score} out of 100, ${category.label}`}
-        className="relative"
+        className="flex flex-col items-center"
       >
         <svg
-          width="220"
-          height="130"
+          width="200"
+          height="120"
           viewBox={GAUGE_CONFIG.viewBox}
           aria-hidden="true"
         >
@@ -196,7 +196,7 @@ export function ScoreGauge({ score, explanation, isLoading }: ScoreGaugeProps) {
         </svg>
 
         {/* Score category badge */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+        <div className="mt-2">
           <span
             className="text-xs font-semibold px-3 py-1 rounded-full"
             style={{
@@ -213,7 +213,7 @@ export function ScoreGauge({ score, explanation, isLoading }: ScoreGaugeProps) {
       {/* One-line explanation */}
       {explanation && (
         <p
-          className="text-center text-sm mt-8 max-w-xs"
+          className="text-center text-sm mt-4 px-4 max-w-xs"
           style={{ color: "var(--text-secondary)" }}
         >
           {explanation}
