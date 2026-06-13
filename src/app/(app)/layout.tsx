@@ -60,7 +60,7 @@ export default async function AppLayout({ children }: AppLayoutProps) {
       {/* accessible semantic HTML: <main> landmark for content area */}
       <main
         id="main-content"
-        className="overflow-y-auto"
+        className="overflow-y-auto pt-20 md:pt-0"
         style={{ background: "var(--bg-primary)" }}
       >
         {children}

@@ -101,11 +101,11 @@ export default async function DashboardPage() {
       {/* Hero section: Score gauge + trends */}
       <section
         aria-labelledby="score-section-heading"
-        className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-20"
       >
         {/* Mental Readiness Score (hero) */}
         <div
-          className="glass-card p-8 lg:col-span-1 flex flex-col items-center justify-center"
+          className="glass-card p-12 lg:col-span-1 flex flex-col items-center justify-center"
           role="region"
           aria-label="Mental Readiness Score"
         >
@@ -148,7 +148,7 @@ export default async function DashboardPage() {
       </section>
 
       {/* Tier 2 cards: Triggers, Burnout, What Changed */}
-      <section aria-labelledby="insights-heading" className="mt-8">
+      <section aria-labelledby="insights-heading" className="mt-20">
         <h2
           id="insights-heading"
           className="text-lg font-semibold mb-6"
@@ -162,7 +162,7 @@ export default async function DashboardPage() {
       {/* Journaling streak */}
       {profile && (
         <div
-          className="glass-card p-8 mt-8 flex items-center gap-6"
+          className="glass-card p-12 mt-20 flex items-center gap-6"
           role="status"
           aria-label={`Journaling streak: ${profile.check_in_count} days`}
         >

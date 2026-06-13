@@ -80,7 +80,11 @@ export async function POST(request: NextRequest) {
   const { message, sessionMessages } = parseResult.data;
 
   // ── Fetch user context for system prompt ───────────────────
-  const [profileResult, insightResult, metricsResult, summaryResult] =
+  // Efficiency: Fetch all user history in parallel.
+  // Code Quality: Previously, readiness_scores was queried in Promise.all but the result was discarded
+  // because of a destructuring typo, resulting in a duplicate sequential query.
+  // By destructuring all 5 results and using scoreResult directly, we save one database roundtrip!
+  const [profileResult, insightResult, metricsResult, summaryResult, scoreResult] =
     await Promise.all([
       supabase
         .from("user_profiles")
@@ -121,18 +125,9 @@ export async function POST(request: NextRequest) {
     return new Response("User profile not found", { status: 404 });
   }
 
-  // Fetch score separately (parallel above already fetches it as index 4)
-  const { data: latestScoreData } = await supabase
-    .from("readiness_scores")
-    .select("score")
-    .eq("user_id", user.id)
-    .order("score_date", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-
   const systemPrompt = buildCompanionSystemPrompt({
     profile: profileResult.data,
-    latestScore: latestScoreData?.score ?? null,
+    latestScore: scoreResult.data?.score ?? null,
     latestInsight: insightResult.data ?? null,
     latestMetrics: metricsResult.data ?? null,
     weeklySummary: summaryResult.data ?? null,

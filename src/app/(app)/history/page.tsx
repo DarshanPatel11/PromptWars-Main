@@ -197,7 +197,7 @@ export default function HistoryPage() {
         ))}
       </div>
 
-      <div className="flex gap-6">
+      <div className="flex flex-col md:flex-row gap-6">
         {/* Calendar heat map */}
         <div className="flex-1">
           <div className="glass-card p-6">
@@ -278,7 +278,7 @@ export default function HistoryPage() {
         {/* Day detail panel */}
         {selectedDay && (
           <div
-            className="w-80 flex-shrink-0"
+            className="w-full md:w-80 flex-shrink-0"
             role="complementary"
             aria-label={`Details for ${format(parseISO(selectedDay.date), "MMMM d, yyyy")}`}
           >

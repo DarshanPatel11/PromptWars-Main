@@ -69,9 +69,9 @@ export function DashboardClient({
     }));
 
   return (
-    <div className="flex flex-col gap-4 h-full">
+    <div className="flex flex-col gap-10 h-full">
       {/* Score trend chart */}
-      <div className="glass-card p-8 flex-1">
+      <div className="glass-card p-12 flex-1">
         <h3 className="text-sm font-semibold mb-6" style={{ color: "var(--text-muted)" }}>
           14-DAY SCORE TREND
         </h3>
@@ -123,7 +123,7 @@ export function DashboardClient({
       {/* Latest AI insight card */}
       {latestInsight && (
         <div
-          className="glass-card p-8 animate-slide-up"
+          className="glass-card p-12 animate-slide-up"
           role="article"
           aria-label="Latest AI wellness insight"
         >

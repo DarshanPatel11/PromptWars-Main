@@ -19,8 +19,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
-import { generateWeeklySummary } from "@/lib/gemini";
-import { format, subDays } from "date-fns";
+import { generateAndSaveWeeklySummary } from "@/lib/weekly-summary-service";
 
 /**
  * input validation: userId must be a valid UUID.
@@ -66,70 +65,19 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
-  // ── Fetch last 7 days of data ──────────────────────────────
-  const today = format(new Date(), "yyyy-MM-dd");
-  const sevenDaysAgo = format(subDays(new Date(), 7), "yyyy-MM-dd");
+  // ── Generate weekly summary via the shared service ─────────────
+  const result = await generateAndSaveWeeklySummary(supabase, parseResult.data.userId);
 
-  const [journalsResult, metricsResult, profileResult] = await Promise.all([
-    supabase
-      .from("journal_entries")
-      .select("*")
-      .eq("user_id", user.id)
-      .gte("entry_date", sevenDaysAgo)
-      .lte("entry_date", today)
-      .order("entry_date", { ascending: true }),
-    supabase
-      .from("daily_metrics")
-      .select("*")
-      .eq("user_id", user.id)
-      .gte("check_in_date", sevenDaysAgo)
-      .lte("check_in_date", today)
-      .order("check_in_date", { ascending: true }),
-    supabase
-      .from("user_profiles")
-      .select("*")
-      .eq("user_id", user.id)
-      .single(),
-  ]);
-
-  if (!profileResult.data) {
-    return NextResponse.json({ error: "Profile not found" }, { status: 404 });
-  }
-
-  if (!journalsResult.data || journalsResult.data.length === 0) {
-    return NextResponse.json(
-      { message: "Not enough journal data for weekly summary" },
-      { status: 200 }
-    );
-  }
-
-  // ── Generate weekly summary via Gemini ─────────────────────
-  try {
-    const summary = await generateWeeklySummary({
-      profile: profileResult.data,
-      journals: journalsResult.data,
-      metrics: metricsResult.data ?? [],
-    });
-
-    if (summary) {
-      // Save weekly summary
-      await supabase.from("weekly_summaries").upsert(
-        {
-          user_id: user.id,
-          summary,
-          week_ending: today,
-        },
-        { onConflict: "user_id,week_ending" }
-      );
+  if (!result.success) {
+    if (result.error === "Profile not found") {
+      return NextResponse.json({ error: "Profile not found" }, { status: 404 });
     }
-
-    return NextResponse.json({ success: true, week_ending: today });
-  } catch (error) {
-    // error handling exceptions: log but return 200 (non-critical operation)
-    console.error("[MindCompass API] Weekly summary generation failed:", error);
+    // Return 200 for other failures (non-critical operation fallback)
     return NextResponse.json(
-      { success: false, error: "Summary generation failed" },
+      { success: false, error: result.error },
       { status: 200 }
     );
   }
+
+  return NextResponse.json({ success: true, week_ending: result.week_ending });
 }

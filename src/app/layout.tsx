@@ -9,7 +9,15 @@
  */
 
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -60,28 +68,13 @@ interface RootLayoutProps {
  */
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className="dark">
-      {/*
-       * accessible semantic HTML: <head> contains preconnects for faster font loading.
-       * optimized loading state loaders: preconnect to Google Fonts reduces FOUT.
-       * minimized layout shifting: font-display:swap prevents invisible text.
-       */}
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
+    <html lang="en" className={`dark ${inter.variable}`}>
+      <head />
+      <body className={inter.className}>
         {/*
          * accessible semantic HTML: <main> is the primary landmark.
          * responsive viewport framework: full-viewport layout container.
+         * Typography: Inter is applied globally here.
          */}
         {children}
       </body>
